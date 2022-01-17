@@ -362,6 +362,8 @@ extension AddInformationViewController: UIImagePickerControllerDelegate & UINavi
         }
         if let image = info[.editedImage] as? UIImage {
             filmImageView.image = image
+            print("fsdafads")
+
         }
     }
 }
