@@ -16,6 +16,7 @@ final class ViewController: UIViewController   {
         setupConstrains()
         setupUI()
         addNextScreen()
+        userDefaults()
     }
     // MARK: - Setups
     private func addSubViews(){
@@ -23,36 +24,43 @@ final class ViewController: UIViewController   {
     }
     private func setupConstrains(){
         informationTableView.translatesAutoresizingMaskIntoConstraints = false
-        informationTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 162).isActive = true
-        informationTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 22).isActive = true
-        informationTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -18).isActive = true
-        informationTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: -50).isActive = true
+        informationTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
+        informationTableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 0).isActive = true
+        informationTableView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
+        informationTableView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
     }
     private func setupUI(){
         title = "My Movie List"
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.mainViewControllerBackgroundColor
         
         informationTableView.delegate = self
         informationTableView.dataSource = self
         informationTableView.rowHeight = UITableView.automaticDimension
         informationTableView.separatorStyle = .none
-        informationTableView.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
-        
-        view.backgroundColor = UIColor(red: 0.898, green: 0.898, blue: 0.898, alpha: 1)
+        informationTableView.backgroundColor = AppColor.mainViewControllerBackgroundColor
     }
     private func addNextScreen(){
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addInformation))
-        addButton.tintColor = .systemBlue
+        addButton.tintColor = AppColor.buttonColorText
         
         navigationItem.setRightBarButton(addButton, animated: true)
         
         informationTableView.register(InformationTableViewCell.self, forCellReuseIdentifier: "InformationTableViewCell")
-        
     }
-    
-    
+    private func userDefaults(){
+        watchedFilm.append(WatchedFilm(
+            filmName: UserDefaults.standard.string(forKey: UserKeys.filmName.rawValue) ?? "fdsaf",
+            filmRating: UserDefaults.standard.string(forKey: UserKeys.filmRating.rawValue) ?? "fdsaf",
+            filmRelease: UserDefaults.standard.string(forKey: UserKeys.filmRelease.rawValue) ?? "fdsaf",
+            filmDescription: UserDefaults.standard.string(forKey: UserKeys.filmDescription.rawValue) ?? "fdsaf",
+            trailerLink: UserDefaults.standard.string(forKey: UserKeys.trailerLink.rawValue) ?? "fdsaf",
+            imageFilm: UIImageView.init(image: UIImage.strokedCheckmark)
+            //                UserDefaults.standard.object(forKey: UserKeys.imageFilm.rawValue)
+            
+        ))
+    }
     // MARK: - Helpers
     @objc func addInformation(){
         let addInformationViewController = AddInformationViewController()
@@ -74,10 +82,8 @@ extension ViewController:  UITableViewDelegate, UITableViewDataSource {
             presentInfoViewController.screenImageView.image = watchedFilm[indexPath.row].imageFilm.image
             presentInfoViewController.namedLabel.text = watchedFilm[indexPath.row].filmName
             presentInfoViewController.ratingAndYearsLabel.attributedText = ratingAtr(watchedFilm[indexPath.row].filmRating, date: watchedFilm[indexPath.row].filmRelease)
-            
             presentInfoViewController.descriptionLabel.text = watchedFilm[indexPath.row].filmDescription
-            presentInfoViewController.traillerrFilm =  watchedFilm[indexPath.row].trailerLink  //watchedFilm[indexPath.row].filmName
-   
+            presentInfoViewController.traillerrFilm =  watchedFilm[indexPath.row].trailerLink
             self.navigationController?.pushViewController(presentInfoViewController, animated: true)
         }
     }
@@ -88,7 +94,6 @@ extension ViewController:  UITableViewDelegate, UITableViewDataSource {
             cell.nameLabel.text = watchedFilm[indexPath.row].filmName
             cell.ratingLabel.attributedText = ratingMovieInfo(indexPath)
             cell.informationImage.image = watchedFilm[indexPath.row].imageFilm.image
-            cell.traillerLink.text = watchedFilm[indexPath.row].trailerLink
             
             return cell
         }
@@ -103,20 +108,20 @@ extension ViewController:  UITableViewDelegate, UITableViewDataSource {
         return firstString
     }
     private func ratingAtr(_ rating : String ,date:String ) -> NSMutableAttributedString{
-   
+        
         let firstAttributes: [NSAttributedString.Key: Any] = [NSAttributedString.Key.foregroundColor: UIColor.black, NSAttributedString.Key.font: UIFont.manrope(ofSize: 14, weight: .bold)]
         
         let secondAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.592, green: 0.592, blue: 0.592, alpha: 1), NSAttributedString.Key.font: UIFont.manrope(ofSize: 14, weight: .regular)]
         let thirdAttributes = [NSAttributedString.Key.foregroundColor: UIColor(red: 0.592, green: 0.592, blue: 0.592, alpha: 1), NSAttributedString.Key.font: UIFont.manrope(ofSize: 14, weight: .regular)]
-    
-    let firstString = NSMutableAttributedString(string: "\u{2B50} " + rating , attributes: firstAttributes)
-    let secondString = NSAttributedString(string: "/10  ", attributes: secondAttributes)
-    let thirdString = NSAttributedString(string: date , attributes: thirdAttributes)
+        
+        let firstString = NSMutableAttributedString(string: "\u{2B50} " + rating , attributes: firstAttributes)
+        let secondString = NSAttributedString(string: "/10  ", attributes: secondAttributes)
+        let thirdString = NSAttributedString(string: date , attributes: thirdAttributes)
         firstString.append(secondString)
         firstString.append(thirdString)
         
-    return firstString
-
+        return firstString
+        
     }
 }
 extension ViewController:TransferFilmViewControllerDelegats  {

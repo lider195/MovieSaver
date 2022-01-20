@@ -18,7 +18,10 @@ final class NameViewController: UIViewController {
         setupConstrains()
         setupUI()
     }
-   
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        nameFilmTextField.becomeFirstResponder()
+    }
     // MARK: - Setups
     private func addSubViews(){
         view.addSubview(filmNameLabel)
@@ -49,25 +52,29 @@ final class NameViewController: UIViewController {
         lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineView.leadingAnchor.constraint(equalTo: nameFilmTextField.leadingAnchor, constant: 0).isActive = true
         lineView.trailingAnchor.constraint(equalTo: nameFilmTextField.trailingAnchor, constant: 0).isActive = true
-        lineView.bottomAnchor.constraint(equalTo: nameFilmTextField.bottomAnchor, constant: 0).isActive = true
+        lineView.bottomAnchor.constraint(equalTo: nameFilmTextField.bottomAnchor, constant:-5).isActive = true
     }
     
     private func setupUI(){
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.viewBackground
         
         filmNameLabel.text = "Film Name"
-        filmNameLabel.textColor = .black
+        filmNameLabel.textColor = AppColor.textColor
         filmNameLabel.textAlignment = .center
         filmNameLabel.font = .manrope(ofSize: 24, weight: .medium)
         
         nameFilmTextField.placeholder = "  Name"
-        nameFilmTextField.textColor = .black
+        nameFilmTextField.textColor = AppColor.textColor
         
         saveNameButton.setTitle("Save", for: .normal)
-        saveNameButton.setTitleColor(.systemBlue, for: .normal)
+        saveNameButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         saveNameButton.addTarget(self, action: #selector(saveName), for: .touchUpInside)
         lineView.backgroundColor = .systemGray
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
+    
     // MARK: - Helpers
     @objc private func saveName() -> UIAlertController{
         let alert = UIAlertController(title: "Ошибка" , message: "Введите название фильма", preferredStyle: .alert)

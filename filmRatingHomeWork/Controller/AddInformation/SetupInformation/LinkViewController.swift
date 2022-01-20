@@ -18,6 +18,10 @@ final class LinkViewController: UIViewController {
         setupConstrains()
         setupUI()
     }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        linkTextField.becomeFirstResponder()
+    }
     // MARK: - Setups
     private func addSubViews(){
         view.addSubview(linkNameLabel)
@@ -48,27 +52,29 @@ final class LinkViewController: UIViewController {
         lineView.heightAnchor.constraint(equalToConstant: 1).isActive = true
         lineView.leadingAnchor.constraint(equalTo: linkTextField.leadingAnchor, constant: 0).isActive = true
         lineView.trailingAnchor.constraint(equalTo: linkTextField.trailingAnchor, constant: 0).isActive = true
-        lineView.bottomAnchor.constraint(equalTo: linkTextField.bottomAnchor, constant: 0).isActive = true
+        lineView.bottomAnchor.constraint(equalTo: linkTextField.bottomAnchor, constant: -5).isActive = true
     }
     
     private func setupUI(){
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.viewBackground
         
         linkNameLabel.text = "Link YouTube"
-        linkNameLabel.textColor = .black
+        linkNameLabel.textColor = AppColor.textColor
         linkNameLabel.textAlignment = .center
         linkNameLabel.font = .manrope(ofSize: 24, weight: .medium)
         
         linkTextField.placeholder = "link"
-        linkTextField.textColor = .black
+        linkTextField.textColor = AppColor.textColor
         
         savelinkButton.setTitle("Save", for: .normal)
-        savelinkButton.setTitleColor(.systemBlue, for: .normal)
+        savelinkButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         savelinkButton.addTarget(self, action: #selector(trailer), for: .touchUpInside)
         
         lineView.backgroundColor = .systemGray
     }
-    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        view.endEditing(true)
+    }
     
     // MARK: - Helpers
     

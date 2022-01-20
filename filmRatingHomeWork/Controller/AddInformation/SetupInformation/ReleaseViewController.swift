@@ -45,10 +45,10 @@ final class ReleaseViewController: UIViewController {
         saveReleaseButton.centerXAnchor.constraint(equalTo: view.centerXAnchor, constant: 0).isActive = true
     }
     private func setupUI(){
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.viewBackground
         
         releaseLabel.text = "Release Date"
-        releaseLabel.textColor = .black
+        releaseLabel.textColor = AppColor.textColor
         releaseLabel.textAlignment = .center
         releaseLabel.font = .manrope(ofSize: 24, weight: .medium)
         
@@ -57,7 +57,7 @@ final class ReleaseViewController: UIViewController {
        
         
         saveReleaseButton.setTitle("Save", for: .normal)
-        saveReleaseButton.setTitleColor(.systemBlue, for: .normal)
+        saveReleaseButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         saveReleaseButton.addTarget(self, action: #selector(saveDate), for: .touchUpInside)
     }
     

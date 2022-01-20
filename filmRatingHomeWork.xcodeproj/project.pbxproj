@@ -22,7 +22,6 @@
 		DDACA02B27831CCA00383C6C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = DDACA02A27831CCA00383C6C /* Assets.xcassets */; };
 		DDACA02E27831CCA00383C6C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = DDACA02C27831CCA00383C6C /* LaunchScreen.storyboard */; };
 		DDACA03A2783228200383C6C /* InformationTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA0392783228200383C6C /* InformationTableViewCell.swift */; };
-		DDACA03C27834BEB00383C6C /* InformationAddViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA03B27834BEB00383C6C /* InformationAddViewController.swift */; };
 		DDACA03E27849BEB00383C6C /* RatingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA03D27849BEB00383C6C /* RatingViewController.swift */; };
 		DDACA04027849C0600383C6C /* ReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA03F27849C0600383C6C /* ReleaseViewController.swift */; };
 		DDACA04227849C1600383C6C /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA04127849C1600383C6C /* NameViewController.swift */; };
@@ -30,6 +29,7 @@
 		DDACA047278856E500383C6C /* StructFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA046278856E500383C6C /* StructFilm.swift */; };
 		DDACA049278A214D00383C6C /* PresentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA048278A214D00383C6C /* PresentInfoViewController.swift */; };
 		DDE30CD8278DEBF600E82FD6 /* AddInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE30CD7278DEBF600E82FD6 /* AddInformationViewController.swift */; };
+		DDEFC5EF27971B0D00FC565F /* enum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEFC5EE27971B0D00FC565F /* enum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -50,7 +50,6 @@
 		DDACA02D27831CCA00383C6C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		DDACA02F27831CCA00383C6C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		DDACA0392783228200383C6C /* InformationTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationTableViewCell.swift; sourceTree = "<group>"; };
-		DDACA03B27834BEB00383C6C /* InformationAddViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InformationAddViewController.swift; sourceTree = "<group>"; };
 		DDACA03D27849BEB00383C6C /* RatingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RatingViewController.swift; sourceTree = "<group>"; };
 		DDACA03F27849C0600383C6C /* ReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseViewController.swift; sourceTree = "<group>"; };
 		DDACA04127849C1600383C6C /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
@@ -58,6 +57,7 @@
 		DDACA046278856E500383C6C /* StructFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructFilm.swift; sourceTree = "<group>"; };
 		DDACA048278A214D00383C6C /* PresentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentInfoViewController.swift; sourceTree = "<group>"; };
 		DDE30CD7278DEBF600E82FD6 /* AddInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInformationViewController.swift; sourceTree = "<group>"; };
+		DDEFC5EE27971B0D00FC565F /* enum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -157,7 +157,6 @@
 				DDACA02327831CC800383C6C /* SceneDelegate.swift */,
 				DDACA02A27831CCA00383C6C /* Assets.xcassets */,
 				DDACA02F27831CCA00383C6C /* Info.plist */,
-				DDACA03B27834BEB00383C6C /* InformationAddViewController.swift */,
 			);
 			path = filmRatingHomeWork;
 			sourceTree = "<group>";
@@ -186,6 +185,7 @@
 			children = (
 				DDACA045278856D600383C6C /* Struct */,
 				DDACA0382783224E00383C6C /* Cell */,
+				DDEFC5EE27971B0D00FC565F /* enum.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -293,8 +293,8 @@
 				DDACA03A2783228200383C6C /* InformationTableViewCell.swift in Sources */,
 				DDACA047278856E500383C6C /* StructFilm.swift in Sources */,
 				DDACA03E27849BEB00383C6C /* RatingViewController.swift in Sources */,
-				DDACA03C27834BEB00383C6C /* InformationAddViewController.swift in Sources */,
 				DDACA02427831CC800383C6C /* SceneDelegate.swift in Sources */,
+				DDEFC5EF27971B0D00FC565F /* enum.swift in Sources */,
 				DD64AECA2790AF3300A2A113 /* enumFonts.swift in Sources */,
 				DDACA04427884C8C00383C6C /* LinkViewController.swift in Sources */,
 			);

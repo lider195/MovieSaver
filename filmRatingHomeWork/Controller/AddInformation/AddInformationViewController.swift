@@ -15,13 +15,10 @@ final class AddInformationViewController: UIViewController{
     // MARK: Weak
     weak var delegateFilm: TransferFilmViewControllerDelegats?
     // MARK: Private
-    // scrollView
     private let scrollView = UIScrollView()
-    // view
     private let contentView = UIView()
     private let circleImageView = UIView()
     private let filmImageView = UIImageView()
-    // label
     private let nameLabel = UILabel()
     private let ratingLabel = UILabel()
     private let dateLabel = UILabel()
@@ -31,14 +28,11 @@ final class AddInformationViewController: UIViewController{
     private var dateInfoLabel = UILabel()
     private var linkInfoLabel = UILabel()
     private let descriptionLabel = UILabel()
-    // button
     private let nameChangeButton = UIButton()
     private let ratingChangeButton = UIButton()
     private let dateChangeButton = UIButton()
     private let linkChangeButton = UIButton()
-    // textView
     private let descriptionTextView = UITextView()
-    // stackView
     private var firstVerticalStackView = UIStackView()
     private var horizontalOneStackView = UIStackView()
     private var horizontalTwoStackView = UIStackView()
@@ -46,8 +40,6 @@ final class AddInformationViewController: UIViewController{
     private var twoVerticalStackView = UIStackView()
     private var threeVerticalStackView = UIStackView()
     private var fourVerticalStackView = UIStackView()
-    
-    
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -62,12 +54,15 @@ final class AddInformationViewController: UIViewController{
         setupButton()
         addMovieImageViewUI()
     }
-    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
         circleImageView.layer.cornerRadius = circleImageView.frame.size.height/2
         circleImageView.layer.masksToBounds = true
     }
+    //    override func viewDidAppear(_ animated: Bool) {
+    //        super.viewDidAppear(animated)
+    //        descriptionTextView.becomeFirstResponder()
+    //    }
     // MARK: - Setups
     
     private func addSubviews(){
@@ -77,7 +72,6 @@ final class AddInformationViewController: UIViewController{
         circleImageView.addSubview(filmImageView)
         contentView.addSubview(descriptionLabel)
         contentView.addSubview(descriptionTextView)
-        
     }
     private func addStackView(){
         oneVerticalStackView = UIStackView(arrangedSubviews: [nameLabel,nameInfoLabel,nameChangeButton])
@@ -185,80 +179,80 @@ final class AddInformationViewController: UIViewController{
         title = "Add new"
         navigationController?.navigationBar.prefersLargeTitles = true
         
-        scrollView.backgroundColor = .white
+        scrollView.backgroundColor = AppColor.viewBackground
         
         filmImageView.image = UIImage(named: "image1")
         
         descriptionLabel.text = "Description"
         descriptionLabel.font = .manrope(ofSize: 18, weight: .light)
         descriptionLabel.textAlignment = .center
-        descriptionLabel.textColor = .black
+        descriptionLabel.textColor = AppColor.textColor
         
         nameLabel.text = "Name"
         nameLabel.textAlignment = .center
         nameLabel.font = .manrope(ofSize: 18, weight: .light)
-        nameLabel.textColor = .black
+        nameLabel.textColor = AppColor.textColor
         
         ratingLabel.text = "Your Rating"
         ratingLabel.font = .manrope(ofSize: 18, weight: .light)
         ratingLabel.textAlignment = .center
-        ratingLabel.textColor = .black
+        ratingLabel.textColor = AppColor.textColor
         
         dateLabel.text = "Release Date"
         dateLabel.font = .manrope(ofSize: 18, weight: .light)
         dateLabel.textAlignment = .center
-        dateLabel.textColor = .black
+        dateLabel.textColor = AppColor.textColor
         
         linkLabel.text = "YouTube Link"
         linkLabel.font = .manrope(ofSize: 18, weight: .light)
         linkLabel.textAlignment = .center
-        linkLabel.textColor = .black
+        linkLabel.textColor = AppColor.textColor
         
         nameChangeButton.setTitle("Change", for: .normal)
-        nameChangeButton.setTitleColor(.systemBlue, for: .normal)
+        nameChangeButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         ratingChangeButton.setTitle("Change", for: .normal)
-        ratingChangeButton.setTitleColor(.systemBlue, for: .normal)
+        ratingChangeButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         dateChangeButton.setTitle("Change", for: .normal)
-        dateChangeButton.setTitleColor(.systemBlue, for: .normal)
+        dateChangeButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         linkChangeButton.setTitle("Change", for: .normal)
-        linkChangeButton.setTitleColor(.systemBlue, for: .normal)
+        linkChangeButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         
         nameInfoLabel.text = "-"
-        nameInfoLabel.textColor = .black
+        nameInfoLabel.textColor = AppColor.textColor
         nameInfoLabel.font = .manrope(ofSize: 18, weight: .light)
         nameInfoLabel.textAlignment = .center
         nameInfoLabel.adjustsFontSizeToFitWidth = true
-        nameInfoLabel.minimumScaleFactor = 0.5
+        nameInfoLabel.minimumScaleFactor = 0.9
         
         ratingInfoLabel.text = "-"
-        ratingInfoLabel.textColor = .black
+        ratingInfoLabel.textColor = AppColor.textColor
         ratingInfoLabel.font = .manrope(ofSize: 18, weight: .light)
         ratingInfoLabel.textAlignment = .center
         ratingInfoLabel.adjustsFontSizeToFitWidth = true
         ratingInfoLabel.minimumScaleFactor = 0.5
         
         dateInfoLabel.text = "-"
-        dateInfoLabel.textColor = .black
+        dateInfoLabel.textColor = AppColor.textColor
         dateInfoLabel.font = .manrope(ofSize: 18, weight: .light)
         dateInfoLabel.textAlignment = .center
         dateInfoLabel.adjustsFontSizeToFitWidth = true
         dateInfoLabel.minimumScaleFactor = 0.5
         
         linkInfoLabel.text = "-"
-        linkInfoLabel.textColor = .black
+        linkInfoLabel.textColor = AppColor.textColor
         linkInfoLabel.font = .manrope(ofSize: 18, weight: .light)
         linkInfoLabel.textAlignment = .center
         linkInfoLabel.adjustsFontSizeToFitWidth = true
         linkInfoLabel.minimumScaleFactor = 0.5
         
         descriptionTextView.font = .manrope(ofSize: 14, weight: .regular)
-        descriptionTextView.backgroundColor = .white
-        descriptionTextView.textColor = .black
-        
+        descriptionTextView.backgroundColor = AppColor.viewBackground
+        descriptionTextView.textColor = AppColor.textColor
+      
     }
     private func setupNavigationBar(){
         let saveButton = UIBarButtonItem(barButtonSystemItem: .save, target: self, action: #selector(saveFilmAction))
-        saveButton.tintColor = .systemBlue
+        saveButton.tintColor = AppColor.buttonColorText
         navigationItem.setRightBarButton(saveButton, animated: true)
     }
     private func setupButton(){
@@ -272,11 +266,20 @@ final class AddInformationViewController: UIViewController{
         circleImageView.isUserInteractionEnabled = true
         circleImageView.addGestureRecognizer(tap)
     }
-      
+    
+  
     // MARK: - Helpers
     @objc func saveFilmAction(sender: UIButton!) {
-        let watchedFilm = WatchedFilm(filmName: nameInfoLabel.text!, filmRating: ratingInfoLabel.text!, filmRelease: dateInfoLabel.text!,filmDescription: descriptionTextView.text!, trailerLink: linkInfoLabel.text!,imageFilm: filmImageView)
+        let watchedFilm = WatchedFilm(filmName: nameInfoLabel.text!, filmRating: ratingInfoLabel.text!, filmRelease: dateInfoLabel.text!,filmDescription: descriptionTextView.text!, trailerLink: linkInfoLabel.text!,imageFilm: filmImageView )
         delegateFilm?.transferMovie(watchedFilm)
+      
+        UserDefaults.standard.set(watchedFilm.filmName, forKey: UserKeys.filmName.rawValue)
+        UserDefaults.standard.set(watchedFilm.filmRelease, forKey: UserKeys.filmRelease.rawValue)
+        UserDefaults.standard.set(watchedFilm.filmRating, forKey: UserKeys.filmRating.rawValue)
+        UserDefaults.standard.set(watchedFilm.trailerLink, forKey: UserKeys.trailerLink.rawValue)
+        UserDefaults.standard.set(watchedFilm.filmDescription, forKey: UserKeys.filmDescription.rawValue)
+//        UserDefaults.standard.setValue(watchedFilm.imageFilm, forKey: UserKeys.imageFilm.rawValue)
+    
         navigationController?.popViewController(animated: true)
     }
     
@@ -362,8 +365,6 @@ extension AddInformationViewController: UIImagePickerControllerDelegate & UINavi
         }
         if let image = info[.editedImage] as? UIImage {
             filmImageView.image = image
-            print("fsdafads")
-
         }
     }
 }

@@ -12,7 +12,7 @@ final class RatingViewController: UIViewController {
     private let saveRatingButton = UIButton()
     private let doubles = Array(stride(from: 0.0, through: 10.0, by: 0.1).reversed())
     private var numbersDouble:[String] = []
-    private var backScreen = String()
+    private var backScreen:String = "10.0"
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -50,10 +50,10 @@ final class RatingViewController: UIViewController {
     }
     
     private func setupUI(){
-        view.backgroundColor = .white
+        view.backgroundColor = AppColor.viewBackground
         
         ratingLabel.text = "Your Rating"
-        ratingLabel.textColor = .black
+        ratingLabel.textColor = AppColor.textColor
         ratingLabel.font = .manrope(ofSize: 24, weight: .medium)
         
         ratingLabel.textAlignment = .center
@@ -61,7 +61,7 @@ final class RatingViewController: UIViewController {
         ratingPickerView.dataSource = self
         
         saveRatingButton.setTitle("Save", for: .normal)
-        saveRatingButton.setTitleColor(.systemBlue, for: .normal)
+        saveRatingButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         saveRatingButton.addTarget(self, action: #selector(saveRating), for: .touchUpInside)
         for string in doubles {
             numbersDouble.append(String(format: "%.1f", string))
