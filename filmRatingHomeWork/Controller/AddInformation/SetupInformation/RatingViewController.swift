@@ -10,9 +10,9 @@ final class RatingViewController: UIViewController {
     private let ratingPickerView = UIPickerView()
     private let ratingLabel = UILabel()
     private let saveRatingButton = UIButton()
-    private let doubles = Array(stride(from: 0.0, through: 10.0, by: 0.1).reversed())
-    private var numbersDouble:[String] = []
-    private var backScreen:String = "10.0"
+    private let numbersOfPicker = Array(stride(from: 0.0, through: 10.0, by: 0.1).reversed())
+    private var arrayMeaning:[String] = []
+    private var defaultNumber:String = "10.0"
     // MARK: - Lifecycle
     
     override func viewDidLoad() {
@@ -20,7 +20,6 @@ final class RatingViewController: UIViewController {
         addSubViews()
         setupConstrains()
         setupUI()
-        
     }
     // MARK: - Setups
     private func addSubViews(){
@@ -63,14 +62,14 @@ final class RatingViewController: UIViewController {
         saveRatingButton.setTitle("Save", for: .normal)
         saveRatingButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         saveRatingButton.addTarget(self, action: #selector(saveRating), for: .touchUpInside)
-        for string in doubles {
-            numbersDouble.append(String(format: "%.1f", string))
+        for string in numbersOfPicker {
+            arrayMeaning.append(String(format: "%.1f", string))
         }
     }
     
     // MARK: - Helpers
     @objc func saveRating(){
-        delegateRating?.transferRating(backScreen)
+        delegateRating?.transferRating(defaultNumber)
         navigationController?.popViewController(animated: true)
     }
 }
@@ -82,12 +81,12 @@ extension RatingViewController: UIPickerViewDataSource,UIPickerViewDelegate {
         return 1
     }
     func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
-        return numbersDouble.count
+        return arrayMeaning.count
     }
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        return  numbersDouble[row]
+        return  arrayMeaning[row]
     }
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        backScreen = numbersDouble[row]
+        defaultNumber = arrayMeaning[row]
     }
 }

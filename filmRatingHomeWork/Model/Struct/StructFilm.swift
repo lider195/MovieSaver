@@ -5,6 +5,5 @@ struct WatchedFilm{
     var filmRelease: String
     var filmDescription: String
     var trailerLink: String
-    var imageFilm: UIImageView
-    
+    var imageFilm: UIImageView    
 }

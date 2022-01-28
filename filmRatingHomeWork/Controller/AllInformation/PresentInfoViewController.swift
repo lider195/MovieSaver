@@ -5,11 +5,11 @@ final class PresentInfoViewController: UIViewController {
     // MARK: - Properties
     // MARK: Public
     let screenImageView = UIImageView()
-    let whiteView = UIView()
+    private let whiteView = UIView()
     let namedLabel = UILabel()
     let ratingAndYearsLabel = UILabel()
     let descriptionLabel = UILabel()
-    var youTubeWebView = WKWebView()
+    private var youTubeWebView = WKWebView()
     var traillerrFilm:String = ""
     // MARK: Private
     private let presentationScrollView = UIScrollView()
@@ -36,7 +36,7 @@ final class PresentInfoViewController: UIViewController {
         whiteView.addSubview(ratingAndYearsLabel)
         whiteView.addSubview(descriptionLabel)
         whiteView.addSubview(youTubeWebView)
-       
+        
     }
     
     private func setupConstrains(){
@@ -46,7 +46,7 @@ final class PresentInfoViewController: UIViewController {
         presentationScrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         presentationScrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
-       
+        
         
         whiteView.translatesAutoresizingMaskIntoConstraints = false
         whiteView.topAnchor.constraint(equalTo: presentationScrollView.topAnchor, constant: 0).isActive = true
@@ -85,7 +85,7 @@ final class PresentInfoViewController: UIViewController {
         youTubeWebView.leadingAnchor.constraint(equalTo: whiteView.leadingAnchor, constant: 18).isActive = true
         youTubeWebView.trailingAnchor.constraint(equalTo: whiteView.trailingAnchor, constant: -18).isActive = true
         youTubeWebView.heightAnchor.constraint(equalToConstant: 196).isActive = true
-       
+        
     }
     
     private func setupUI(){
@@ -97,13 +97,13 @@ final class PresentInfoViewController: UIViewController {
         
         namedLabel.font = .manrope(ofSize: 24, weight: .bold)
         namedLabel.textColor = AppColor.textColor
-            
+        
         descriptionLabel.numberOfLines = 0
         descriptionLabel.textColor = AppColor.textColor
         descriptionLabel.font = .manrope(ofSize: 14, weight: .regular)
-                
+        
         youTubeWebView.layer.borderWidth = 0.5
-      
+        
         let url = URL(string: "https://www.youtube.com/\(traillerrFilm)")
         let request = URLRequest(url: url!)
         youTubeWebView.load(request)

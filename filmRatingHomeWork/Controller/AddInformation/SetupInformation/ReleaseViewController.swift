@@ -1,9 +1,7 @@
 import UIKit
 
 final class ReleaseViewController: UIViewController {
-    
     // MARK: - Properties
-    
     // MARK: Weak
     weak var delegateDate: TransferInfoAddViewController?
     // MARK: Private
@@ -23,7 +21,6 @@ final class ReleaseViewController: UIViewController {
         view.addSubview(releaseLabel)
         view.addSubview(releasePickerView)
         view.addSubview(saveReleaseButton)
-        
     }
     private func setupConstrains(){
         releaseLabel.translatesAutoresizingMaskIntoConstraints = false
@@ -68,7 +65,6 @@ final class ReleaseViewController: UIViewController {
         dateAnswer.dateFormat = "yyyy"
         let releasingDate: String = dateAnswer.string(from: releasePickerView.date)
         delegateDate?.transferDate(releasingDate)
-        
         navigationController?.popViewController(animated: true)
     }
 }

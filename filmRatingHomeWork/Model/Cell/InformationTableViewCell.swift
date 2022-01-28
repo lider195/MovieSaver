@@ -1,26 +1,26 @@
 
 import UIKit
 
-class InformationTableViewCell: UITableViewCell {
+final class InformationTableViewCell: UITableViewCell {
     // MARK: - Properties
     
     // MARK: Public
     var informationImage = UIImageView()
-    var view = UIView()
-    var whiteView = UIView()
+    private var view = UIView()
+    private  var whiteView = UIView()
     var nameLabel = UILabel()
     var ratingLabel  = UILabel()
-    var traillerLink = UILabel()
+    private  var traillerLink = UILabel()
     // MARK: Private
-   
-
+    
+    
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
         setupConstrains()
         setupUI()
-
+        
     }
     
     required init?(coder: NSCoder) {
@@ -36,7 +36,6 @@ class InformationTableViewCell: UITableViewCell {
         contentView.addSubview(traillerLink)
     }
     private func setupConstrains(){
-/////////
         view.translatesAutoresizingMaskIntoConstraints = false
         view.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 5).isActive = true
         view.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
@@ -92,7 +91,7 @@ class InformationTableViewCell: UITableViewCell {
         view.layer.shadowOpacity = 0.5
         view.layer.shadowRadius = 1
         view.backgroundColor = AppColor.viewBackground
-      
+        
         
     }
     // MARK: - Helpers

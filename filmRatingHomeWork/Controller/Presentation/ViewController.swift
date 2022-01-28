@@ -1,11 +1,8 @@
 import UIKit
 
 final class ViewController: UIViewController   {
-    
     // MARK: - Properties
-    
     // MARK: Public
-    
     // MARK: Private
     private let informationTableView = UITableView()
     private var watchedFilm:[WatchedFilm] = []
@@ -15,13 +12,22 @@ final class ViewController: UIViewController   {
         addSubViews()
         setupConstrains()
         setupUI()
-        addNextScreen()
-        userDefaults()
+        presentInformaationView()
+        getUserDefaults()
+        setupTableView()
     }
     // MARK: - Setups
     private func addSubViews(){
         view.addSubview(informationTableView)
     }
+    private func setupTableView(){
+        informationTableView.delegate = self
+        informationTableView.dataSource = self
+        informationTableView.rowHeight = UITableView.automaticDimension
+        informationTableView.separatorStyle = .none
+        informationTableView.backgroundColor = AppColor.mainViewControllerBackgroundColor
+    }
+    
     private func setupConstrains(){
         informationTableView.translatesAutoresizingMaskIntoConstraints = false
         informationTableView.topAnchor.constraint(equalTo: view.topAnchor, constant: 0).isActive = true
@@ -31,25 +37,15 @@ final class ViewController: UIViewController   {
     }
     private func setupUI(){
         title = "My Movie List"
-        
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = AppColor.mainViewControllerBackgroundColor
-        
-        informationTableView.delegate = self
-        informationTableView.dataSource = self
-        informationTableView.rowHeight = UITableView.automaticDimension
-        informationTableView.separatorStyle = .none
-        informationTableView.backgroundColor = AppColor.mainViewControllerBackgroundColor
     }
-    private func addNextScreen(){
+    private func presentInformaationView(){
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addInformation))
         addButton.tintColor = AppColor.buttonColorText
-        
         navigationItem.setRightBarButton(addButton, animated: true)
-        
-        informationTableView.register(InformationTableViewCell.self, forCellReuseIdentifier: "InformationTableViewCell")
     }
-    private func userDefaults(){
+    private func getUserDefaults(){
         watchedFilm.append(WatchedFilm(
             filmName: UserDefaults.standard.string(forKey: UserKeys.filmName.rawValue) ?? "fdsaf",
             filmRating: UserDefaults.standard.string(forKey: UserKeys.filmRating.rawValue) ?? "fdsaf",
@@ -76,7 +72,6 @@ extension ViewController:  UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         if let presentInfoViewController = storyboard.instantiateViewController(withIdentifier: "PresentInfoViewController") as? PresentInfoViewController {
             informationTableView.isUserInteractionEnabled = true
             presentInfoViewController.screenImageView.image = watchedFilm[indexPath.row].imageFilm.image
@@ -88,7 +83,8 @@ extension ViewController:  UITableViewDelegate, UITableViewDataSource {
         }
     }
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        
+        informationTableView.register(InformationTableViewCell.self, forCellReuseIdentifier: "InformationTableViewCell")
+
         if let cell = tableView.dequeueReusableCell(withIdentifier: "InformationTableViewCell", for: indexPath) as? InformationTableViewCell{
             
             cell.nameLabel.text = watchedFilm[indexPath.row].filmName

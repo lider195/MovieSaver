@@ -68,7 +68,7 @@ final class NameViewController: UIViewController {
         
         saveNameButton.setTitle("Save", for: .normal)
         saveNameButton.setTitleColor(AppColor.buttonColorText, for: .normal)
-        saveNameButton.addTarget(self, action: #selector(saveName), for: .touchUpInside)
+        saveNameButton.addTarget(self, action: #selector(createSaveNameAlert), for: .touchUpInside)
         lineView.backgroundColor = .systemGray
     }
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
@@ -76,7 +76,7 @@ final class NameViewController: UIViewController {
     }
     
     // MARK: - Helpers
-    @objc private func saveName() -> UIAlertController{
+    @objc private func createSaveNameAlert() -> UIAlertController{
         let alert = UIAlertController(title: "Ошибка" , message: "Введите название фильма", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "OK", style: .cancel))
         let entryName = nameFilmTextField.text!

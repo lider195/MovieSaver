@@ -59,10 +59,6 @@ final class AddInformationViewController: UIViewController{
         circleImageView.layer.cornerRadius = circleImageView.frame.size.height/2
         circleImageView.layer.masksToBounds = true
     }
-    //    override func viewDidAppear(_ animated: Bool) {
-    //        super.viewDidAppear(animated)
-    //        descriptionTextView.becomeFirstResponder()
-    //    }
     // MARK: - Setups
     
     private func addSubviews(){
@@ -98,15 +94,12 @@ final class AddInformationViewController: UIViewController{
         scrollView.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: 0).isActive = true
         scrollView.bottomAnchor.constraint(equalTo: view.bottomAnchor, constant: 0).isActive = true
         
-        
         contentView.translatesAutoresizingMaskIntoConstraints = false
         contentView.topAnchor.constraint(equalTo: scrollView.topAnchor, constant: 0).isActive = true
         contentView.leadingAnchor.constraint(equalTo: scrollView.leadingAnchor, constant: 0).isActive = true
         contentView.trailingAnchor.constraint(equalTo: scrollView.trailingAnchor, constant: 0).isActive = true
         contentView.bottomAnchor.constraint(equalTo: scrollView.bottomAnchor, constant: 0).isActive = true
-        //////////////
         contentView.widthAnchor.constraint(equalTo: scrollView.widthAnchor, multiplier: 1.0).isActive = true
-        
         
         circleImageView.translatesAutoresizingMaskIntoConstraints = false
         circleImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 27).isActive = true
@@ -266,8 +259,6 @@ final class AddInformationViewController: UIViewController{
         circleImageView.isUserInteractionEnabled = true
         circleImageView.addGestureRecognizer(tap)
     }
-    
-  
     // MARK: - Helpers
     @objc func saveFilmAction(sender: UIButton!) {
         let watchedFilm = WatchedFilm(filmName: nameInfoLabel.text!, filmRating: ratingInfoLabel.text!, filmRelease: dateInfoLabel.text!,filmDescription: descriptionTextView.text!, trailerLink: linkInfoLabel.text!,imageFilm: filmImageView )

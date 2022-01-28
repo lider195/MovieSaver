@@ -11,7 +11,6 @@ final class LinkViewController: UIViewController {
     private let savelinkButton = UIButton()
     private let lineView = UIView()
     // MARK: - Lifecycle
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         addSubViews()
@@ -54,7 +53,6 @@ final class LinkViewController: UIViewController {
         lineView.trailingAnchor.constraint(equalTo: linkTextField.trailingAnchor, constant: 0).isActive = true
         lineView.bottomAnchor.constraint(equalTo: linkTextField.bottomAnchor, constant: -5).isActive = true
     }
-    
     private func setupUI(){
         view.backgroundColor = AppColor.viewBackground
         
