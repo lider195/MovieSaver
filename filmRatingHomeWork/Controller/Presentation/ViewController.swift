@@ -12,8 +12,8 @@ final class ViewController: UIViewController   {
         addSubViews()
         setupConstrains()
         setupUI()
-        presentInformaationView()
-        getUserDefaults()
+        setupAddButton()
+        getFilmFromUserDefaults()
         setupTableView()
     }
     // MARK: - Setups
@@ -40,12 +40,12 @@ final class ViewController: UIViewController   {
         navigationController?.navigationBar.prefersLargeTitles = true
         view.backgroundColor = AppColor.mainViewControllerBackgroundColor
     }
-    private func presentInformaationView(){
+    private func setupAddButton(){
         let addButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addInformation))
         addButton.tintColor = AppColor.buttonColorText
         navigationItem.setRightBarButton(addButton, animated: true)
     }
-    private func getUserDefaults(){
+    private func getFilmFromUserDefaults(){
         watchedFilm.append(WatchedFilm(
             filmName: UserDefaults.standard.string(forKey: UserKeys.filmName.rawValue) ?? "fdsaf",
             filmRating: UserDefaults.standard.string(forKey: UserKeys.filmRating.rawValue) ?? "fdsaf",
@@ -86,11 +86,7 @@ extension ViewController:  UITableViewDelegate, UITableViewDataSource {
         informationTableView.register(InformationTableViewCell.self, forCellReuseIdentifier: "InformationTableViewCell")
 
         if let cell = tableView.dequeueReusableCell(withIdentifier: "InformationTableViewCell", for: indexPath) as? InformationTableViewCell{
-            
-            cell.nameLabel.text = watchedFilm[indexPath.row].filmName
-            cell.ratingLabel.attributedText = ratingMovieInfo(indexPath)
-            cell.informationImage.image = watchedFilm[indexPath.row].imageFilm.image
-            
+            cell.set(film: watchedFilm[indexPath.row])            
             return cell
         }
         return UITableViewCell()

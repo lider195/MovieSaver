@@ -3,28 +3,30 @@ import UIKit
 
 final class InformationTableViewCell: UITableViewCell {
     // MARK: - Properties
-    
     // MARK: Public
-    var informationImage = UIImageView()
-    private var view = UIView()
-    private  var whiteView = UIView()
-    var nameLabel = UILabel()
-    var ratingLabel  = UILabel()
-    private  var traillerLink = UILabel()
     // MARK: Private
-    
-    
+    private var informationImage = UIImageView()
+    private var view = UIView()
+    private var whiteView = UIView()
+    private var nameLabel = UILabel()
+    private var ratingLabel  = UILabel()
+    private var traillerLink = UILabel()
     // MARK: - Init
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         addSubviews()
         setupConstrains()
         setupUI()
-        
     }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+    // MARK: - API
+    
+    func set(film: WatchedFilm) {
+        informationImage.image = film.imageFilm.image
+        nameLabel.text = film.filmName
+        ratingLabel.text = film.filmRating
     }
     // MARK: - Setups
     private func addSubviews(){
@@ -68,7 +70,6 @@ final class InformationTableViewCell: UITableViewCell {
         ratingLabel.trailingAnchor.constraint(equalTo: view.trailingAnchor, constant: -15).isActive = true
     }
     private func setupUI(){
-        
         nameLabel.numberOfLines = 3
         nameLabel.textColor = AppColor.textColor
         nameLabel.textAlignment = .center
@@ -91,10 +92,7 @@ final class InformationTableViewCell: UITableViewCell {
         view.layer.shadowOpacity = 0.5
         view.layer.shadowRadius = 1
         view.backgroundColor = AppColor.viewBackground
-        
-        
     }
     // MARK: - Helpers
-    
 }
 

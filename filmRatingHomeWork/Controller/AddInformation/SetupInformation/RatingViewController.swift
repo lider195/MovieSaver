@@ -20,6 +20,7 @@ final class RatingViewController: UIViewController {
         addSubViews()
         setupConstrains()
         setupUI()
+        settingsPicker()
     }
     // MARK: - Setups
     private func addSubViews(){
@@ -62,11 +63,12 @@ final class RatingViewController: UIViewController {
         saveRatingButton.setTitle("Save", for: .normal)
         saveRatingButton.setTitleColor(AppColor.buttonColorText, for: .normal)
         saveRatingButton.addTarget(self, action: #selector(saveRating), for: .touchUpInside)
+    }
+    private func settingsPicker(){
         for string in numbersOfPicker {
             arrayMeaning.append(String(format: "%.1f", string))
         }
     }
-    
     // MARK: - Helpers
     @objc func saveRating(){
         delegateRating?.transferRating(defaultNumber)
