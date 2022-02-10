@@ -102,7 +102,7 @@ final class AddInformationViewController: UIViewController {
         filmImageView.leadingAnchor.constraint(equalTo: circleImageView.leadingAnchor, constant: 0).isActive = true
         filmImageView.trailingAnchor.constraint(equalTo: circleImageView.trailingAnchor, constant: 0).isActive = true
         descriptionLabel.translatesAutoresizingMaskIntoConstraints = false
-    descriptionLabel.topAnchor.constraint(equalTo: firstVerticalStackView.bottomAnchor, constant: 36).isActive = true
+      descriptionLabel.topAnchor.constraint(equalTo: firstVerticalStackView.bottomAnchor, constant: 36).isActive = true
         descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
         descriptionLabel.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
         descriptionLabel.heightAnchor.constraint(equalToConstant: 26).isActive = true
@@ -110,7 +110,7 @@ final class AddInformationViewController: UIViewController {
         descriptionTextView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 11).isActive = true
         descriptionTextView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 32).isActive = true
         descriptionTextView.heightAnchor.constraint(equalToConstant: 145).isActive = true
-    descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
+       descriptionTextView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -32).isActive = true
         descriptionTextView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -47).isActive = true
     }
     private func setupStackConstrains() {
@@ -118,7 +118,7 @@ final class AddInformationViewController: UIViewController {
         firstVerticalStackView.topAnchor.constraint(equalTo: filmImageView.bottomAnchor, constant: 32).isActive = true
         firstVerticalStackView.centerXAnchor.constraint(equalTo: contentView.centerXAnchor, constant: 0).isActive = true
         firstVerticalStackView.heightAnchor.constraint(equalToConstant: 198).isActive = true
-    firstVerticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40).isActive = true
+       firstVerticalStackView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 40).isActive = true
     firstVerticalStackView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -40).isActive = true
     }
     private func setupStack() {
@@ -228,19 +228,14 @@ final class AddInformationViewController: UIViewController {
     }
     // MARK: - Helpers
     @objc func saveFilmAction(sender: UIButton!) {
-        let watchedFilm = WatchedFilm(filmName: nameInfoLabel.text!,
-                                      filmRating: ratingInfoLabel.text!,
-                                      filmRelease: dateInfoLabel.text!,
-                                      filmDescription: descriptionTextView.text!,
-                                      trailerLink: linkInfoLabel.text!,
-                                      imageFilm: filmImageView )
+        let watchedFilm = WatchedFilm(name: nameInfoLabel.text!,
+                                      rating: ratingInfoLabel.text!,
+                                      release: dateInfoLabel.text!,
+                                      description: descriptionTextView.text!,
+                                      link: linkInfoLabel.text!,
+                                      poster: (filmImageView.image?.pngData())! )
+        UserDafaultsManager.instance.saveWatchedFilm(watchedFilm: watchedFilm)
         delegateFilm?.transferMovie(watchedFilm)
-        UserDefaults.standard.set(watchedFilm.filmName, forKey: UserKeys.filmName.rawValue)
-        UserDefaults.standard.set(watchedFilm.filmRelease, forKey: UserKeys.filmRelease.rawValue)
-        UserDefaults.standard.set(watchedFilm.filmRating, forKey: UserKeys.filmRating.rawValue)
-        UserDefaults.standard.set(watchedFilm.trailerLink, forKey: UserKeys.trailerLink.rawValue)
-        UserDefaults.standard.set(watchedFilm.filmDescription, forKey: UserKeys.filmDescription.rawValue)
-        //        UserDefaults.standard.setValue(watchedFilm.imageFilm, forKey: UserKeys.imageFilm.rawValue)
         navigationController?.popViewController(animated: true)
     }
     @objc func nameScreen() {
@@ -318,8 +313,8 @@ extension AddInformationViewController: UIImagePickerControllerDelegate & UINavi
             self.present(alert, animated: true, completion: nil)
         }
     }
-func imagePickerController(_ picker: UIImagePickerController,
-                           didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
+    func imagePickerController(_ picker: UIImagePickerController,
+                               didFinishPickingMediaWithInfo info: [UIImagePickerController.InfoKey: Any]) {
         picker.dismiss(animated: true, completion: nil)
         if let image = info[.originalImage] as? UIImage {
             filmImageView.image = image

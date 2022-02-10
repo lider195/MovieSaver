@@ -16,6 +16,7 @@
 		DD64AEC72790AE5B00A2A113 /* Manrope-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = DD64AEC02790AE5B00A2A113 /* Manrope-Regular.ttf */; };
 		DD64AECA2790AF3300A2A113 /* enumFonts.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD64AEC92790AF3300A2A113 /* enumFonts.swift */; };
 		DD6DA6D727A84347008D6505 /* ColorKeysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DA6D627A84347008D6505 /* ColorKeysEnum.swift */; };
+		DD6DA6DE27AD696A008D6505 /* UserDefaultsManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD6DA6DD27AD696A008D6505 /* UserDefaultsManager.swift */; };
 		DDACA02227831CC800383C6C /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA02127831CC800383C6C /* AppDelegate.swift */; };
 		DDACA02427831CC800383C6C /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA02327831CC800383C6C /* SceneDelegate.swift */; };
 		DDACA02627831CC800383C6C /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA02527831CC800383C6C /* ViewController.swift */; };
@@ -27,10 +28,9 @@
 		DDACA04027849C0600383C6C /* ReleaseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA03F27849C0600383C6C /* ReleaseViewController.swift */; };
 		DDACA04227849C1600383C6C /* NameViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA04127849C1600383C6C /* NameViewController.swift */; };
 		DDACA04427884C8C00383C6C /* LinkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA04327884C8C00383C6C /* LinkViewController.swift */; };
-		DDACA047278856E500383C6C /* StructFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA046278856E500383C6C /* StructFilm.swift */; };
+		DDACA047278856E500383C6C /* WatchedFilm.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA046278856E500383C6C /* WatchedFilm.swift */; };
 		DDACA049278A214D00383C6C /* PresentInfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDACA048278A214D00383C6C /* PresentInfoViewController.swift */; };
 		DDE30CD8278DEBF600E82FD6 /* AddInformationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDE30CD7278DEBF600E82FD6 /* AddInformationViewController.swift */; };
-		DDEFC5EF27971B0D00FC565F /* UserKeysEnum.swift in Sources */ = {isa = PBXBuildFile; fileRef = DDEFC5EE27971B0D00FC565F /* UserKeysEnum.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -43,6 +43,7 @@
 		DD64AEC02790AE5B00A2A113 /* Manrope-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Manrope-Regular.ttf"; sourceTree = "<group>"; };
 		DD64AEC92790AF3300A2A113 /* enumFonts.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = enumFonts.swift; sourceTree = "<group>"; };
 		DD6DA6D627A84347008D6505 /* ColorKeysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorKeysEnum.swift; sourceTree = "<group>"; };
+		DD6DA6DD27AD696A008D6505 /* UserDefaultsManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsManager.swift; sourceTree = "<group>"; };
 		DDACA01E27831CC800383C6C /* filmRatingHomeWork.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = filmRatingHomeWork.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		DDACA02127831CC800383C6C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		DDACA02327831CC800383C6C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -56,10 +57,9 @@
 		DDACA03F27849C0600383C6C /* ReleaseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReleaseViewController.swift; sourceTree = "<group>"; };
 		DDACA04127849C1600383C6C /* NameViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameViewController.swift; sourceTree = "<group>"; };
 		DDACA04327884C8C00383C6C /* LinkViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LinkViewController.swift; sourceTree = "<group>"; };
-		DDACA046278856E500383C6C /* StructFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StructFilm.swift; sourceTree = "<group>"; };
+		DDACA046278856E500383C6C /* WatchedFilm.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WatchedFilm.swift; sourceTree = "<group>"; };
 		DDACA048278A214D00383C6C /* PresentInfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PresentInfoViewController.swift; sourceTree = "<group>"; };
 		DDE30CD7278DEBF600E82FD6 /* AddInformationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddInformationViewController.swift; sourceTree = "<group>"; };
-		DDEFC5EE27971B0D00FC565F /* UserKeysEnum.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserKeysEnum.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -187,8 +187,8 @@
 			children = (
 				DDACA045278856D600383C6C /* Struct */,
 				DDACA0382783224E00383C6C /* Cell */,
-				DDEFC5EE27971B0D00FC565F /* UserKeysEnum.swift */,
 				DD6DA6D627A84347008D6505 /* ColorKeysEnum.swift */,
+				DD6DA6DD27AD696A008D6505 /* UserDefaultsManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -204,7 +204,7 @@
 		DDACA045278856D600383C6C /* Struct */ = {
 			isa = PBXGroup;
 			children = (
-				DDACA046278856E500383C6C /* StructFilm.swift */,
+				DDACA046278856E500383C6C /* WatchedFilm.swift */,
 			);
 			path = Struct;
 			sourceTree = "<group>";
@@ -316,10 +316,10 @@
 				DDACA049278A214D00383C6C /* PresentInfoViewController.swift in Sources */,
 				DDACA04227849C1600383C6C /* NameViewController.swift in Sources */,
 				DDACA03A2783228200383C6C /* InformationTableViewCell.swift in Sources */,
-				DDACA047278856E500383C6C /* StructFilm.swift in Sources */,
+				DDACA047278856E500383C6C /* WatchedFilm.swift in Sources */,
 				DDACA03E27849BEB00383C6C /* RatingViewController.swift in Sources */,
 				DDACA02427831CC800383C6C /* SceneDelegate.swift in Sources */,
-				DDEFC5EF27971B0D00FC565F /* UserKeysEnum.swift in Sources */,
+				DD6DA6DE27AD696A008D6505 /* UserDefaultsManager.swift in Sources */,
 				DD64AECA2790AF3300A2A113 /* enumFonts.swift in Sources */,
 				DDACA04427884C8C00383C6C /* LinkViewController.swift in Sources */,
 			);

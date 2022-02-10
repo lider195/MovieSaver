@@ -1,10 +1,3 @@
-//
-//  SceneDelegate.swift
-//  filmRatingHomeWork
-//
-//  Created by Vadim on 3.01.22.
-//
-
 import UIKit
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {

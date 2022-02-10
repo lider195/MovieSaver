@@ -5,7 +5,11 @@ final class ViewController: UIViewController {
     // MARK: Public
     // MARK: Private
     private let informationTableView = UITableView()
-    private var watchedFilm: [WatchedFilm] = []
+    private var watchedFilm: [WatchedFilm] = [] {
+        didSet {
+            informationTableView.reloadData()
+        }
+    }
     // MARK: - Lifecycle
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -13,8 +17,15 @@ final class ViewController: UIViewController {
         setupConstrains()
         setupUI()
         setupAddButton()
-        getFilmFromUserDefaults()
         setupTableView()
+    }
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        informationTableView.reloadData()
+    }
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        watchedFilm = UserDafaultsManager.instance.getWatchedFilm()
     }
     // MARK: - Setups
     private func addSubViews() {
@@ -44,17 +55,6 @@ final class ViewController: UIViewController {
         addButton.tintColor = AppColor.buttonColorText
         navigationItem.setRightBarButton(addButton, animated: true)
     }
-    private func getFilmFromUserDefaults() {
-        watchedFilm.append(WatchedFilm(
-            filmName: UserDefaults.standard.string(forKey: UserKeys.filmName.rawValue) ?? "fdsaf",
-            filmRating: UserDefaults.standard.string(forKey: UserKeys.filmRating.rawValue) ?? "fdsaf",
-            filmRelease: UserDefaults.standard.string(forKey: UserKeys.filmRelease.rawValue) ?? "fdsaf",
-            filmDescription: UserDefaults.standard.string(forKey: UserKeys.filmDescription.rawValue) ?? "fdsaf",
-            trailerLink: UserDefaults.standard.string(forKey: UserKeys.trailerLink.rawValue) ?? "fdsaf",
-            imageFilm: UIImageView.init(image: UIImage.strokedCheckmark)
-            //                UserDefaults.standard.object(forKey: UserKeys.imageFilm.rawValue)
-        ))
-    }
     // MARK: - Helpers
     @objc func addInformation() {
         let addInformationViewController = AddInformationViewController()
@@ -67,9 +67,19 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.watchedFilm.count
     }
+    func tableView(_ tableView: UITableView,
+                   commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
+        if editingStyle == .delete {
+        UserDafaultsManager.instance.restoreDeletedFilm(deletedFilm:
+                                                                    self.watchedFilm.remove(at: indexPath.row))
+            UserDafaultsManager.instance.updateFilms(updatedFilm:
+                                                                        self.watchedFilm)
+       }
+    }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        if let presentInfoViewController = storyboard.instantiateViewController(withIdentifier: "PresentInfoViewController") as? PresentInfoViewController {
+        if let presentInfoViewController = storyboard.instantiateViewController(
+            withIdentifier: "PresentInfoViewController") as? PresentInfoViewController {
             informationTableView.isUserInteractionEnabled = true
             presentInfoViewController.set(film: watchedFilm[indexPath.row])
             self.navigationController?.pushViewController(presentInfoViewController, animated: true)
@@ -84,7 +94,7 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
-}
+ }
 extension ViewController: TransferFilmViewControllerDelegats {
     func transferMovie(_ film: WatchedFilm) {
         watchedFilm.insert(film, at: 0)
