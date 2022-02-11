@@ -19,10 +19,6 @@ final class ViewController: UIViewController {
         setupAddButton()
         setupTableView()
     }
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        informationTableView.reloadData()
-    }
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         watchedFilm = UserDafaultsManager.instance.getWatchedFilm()
@@ -70,11 +66,11 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
     func tableView(_ tableView: UITableView,
                    commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-        UserDafaultsManager.instance.restoreDeletedFilm(deletedFilm:
-                                                                    self.watchedFilm.remove(at: indexPath.row))
+            UserDafaultsManager.instance.restoreDeletedFilm(deletedFilm:
+                                                                self.watchedFilm.remove(at: indexPath.row))
             UserDafaultsManager.instance.updateFilms(updatedFilm:
-                                                                        self.watchedFilm)
-       }
+                                                        self.watchedFilm)
+        }
     }
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
@@ -94,10 +90,9 @@ extension ViewController: UITableViewDelegate, UITableViewDataSource {
         }
         return UITableViewCell()
     }
- }
+}
 extension ViewController: TransferFilmViewControllerDelegats {
     func transferMovie(_ film: WatchedFilm) {
         watchedFilm.insert(film, at: 0)
-        informationTableView.reloadData()
     }
 }

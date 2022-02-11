@@ -1,10 +1,10 @@
 import UIKit
 struct WatchedFilm: Codable {
-    var name: String
-    var rating: String
-    var release: String
-    var description: String
-    var link: String
+    let name: String
+    let rating: String
+    let release: String
+    let description: String
+    let link: String
     var poster: Data {
         didSet { _ = mainImage }
     }
