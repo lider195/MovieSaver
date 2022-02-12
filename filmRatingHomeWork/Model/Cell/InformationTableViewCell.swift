@@ -22,9 +22,9 @@ final class InformationTableViewCell: UITableViewCell {
     }
     // MARK: - API
     func set(film: WatchedFilm) {
-        informationImage.image = film.imageFilm.image
-        nameLabel.text = film.filmName
-        ratingLabel.attributedText = ratingMovieInfo(film.filmRating)
+        informationImage.image = UIImage(data: film.poster)
+        nameLabel.text = film.name
+        ratingLabel.attributedText = ratingMovieInfo(film.rating)
     }
     // MARK: - Setups
     private func addSubviews() {

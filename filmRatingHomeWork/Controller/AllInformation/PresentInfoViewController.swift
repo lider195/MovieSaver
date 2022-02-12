@@ -27,11 +27,11 @@ final class PresentInfoViewController: UIViewController {
     }
     // MARK: - API
     func set(film: WatchedFilm) {
-        screenImageView.image = film.imageFilm.image
-        namedLabel.text = film.filmName
-        ratingAndYearsLabel.attributedText = ratingAtr(film.filmRating, film.filmRelease)
-        descriptionLabel.text = film.filmDescription
-        traillerrFilm = film.trailerLink
+        screenImageView.image = UIImage(data: film.poster)
+        namedLabel.text = film.name
+        ratingAndYearsLabel.attributedText = ratingAtr(film.rating, film.release)
+        descriptionLabel.text = film.description
+        traillerrFilm = film.link
     }
     // MARK: - Setups
     private func addSubViews() {
