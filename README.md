@@ -5,7 +5,7 @@
 \*  `Date release`\
 \*  `Description`\
 \*  `Save/Delete Information`\
-\*  `WebView`\
+\*  `WebView`
 ---
 \*  `Done by code`\
 \*  `AutoLayout`\
