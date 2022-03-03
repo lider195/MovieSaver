@@ -17,7 +17,7 @@
 \*  `UIPicker`\
 \*  `AutoLayout`
 ---
- ![logo](https://i.yapx.ru/Q9GNn.png)
+ ![Swift Small](https://i.yapx.ru/Q9GNn.png)
  
  ![logo](https://i.yapx.ru/Q9GNq.png)
  
