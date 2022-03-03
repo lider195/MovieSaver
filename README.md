@@ -12,7 +12,7 @@
 \*  `UserDefaults`\
 \*  `Custom Font`\
 \*  `Light/dark theme`\
-\*  `Delegate`
+\*  `Delegate`\
 \*  `TableView`\
 \*  `UIPicker`\
 \*  `AutoLayout`
