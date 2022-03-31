@@ -1,6 +1,6 @@
 #  Movie Saver
 ---
-**Adding information about the movie**
+**Adding information about the movie**\
 \*  `Rating`\
 \*  `Date release`\
 \*  `Description`\
